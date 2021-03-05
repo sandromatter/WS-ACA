@@ -1,0 +1,262 @@
+1613722125953	geckodriver	INFO	Listening on 127.0.0.1:63698
+1613722126507	mozrunner::runner	INFO	Running command: "/Applications/Firefox Nightly.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/0k/fk2yv1891fq63cfv3nwpz6t00000gq/T/rust_mozprofileNhD6UH"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1613722137109	Marionette	INFO	Listening on port 63711
+1613722167745	Marionette	INFO	Stopped listening on port 63711
+1613722747580	geckodriver	INFO	Listening on 127.0.0.1:65417
+1613722747594	mozrunner::runner	INFO	Running command: "/Applications/Firefox Nightly.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/0k/fk2yv1891fq63cfv3nwpz6t00000gq/T/rust_mozprofile2LuFth"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1613722752118	Marionette	INFO	Listening on port 65426
+1613722752152	Marionette	WARN	TLS certificate errors will be ignored for this session
+1613722755216	Marionette	INFO	Stopped listening on port 65426
+1613722785820	geckodriver	INFO	Listening on 127.0.0.1:49346
+1613722785841	mozrunner::runner	INFO	Running command: "/Applications/Firefox Nightly.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/0k/fk2yv1891fq63cfv3nwpz6t00000gq/T/rust_mozprofileirquOK"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1613722789620	Marionette	INFO	Listening on port 49355
+1613722789714	Marionette	WARN	TLS certificate errors will be ignored for this session
+1613722792324	Marionette	INFO	Stopped listening on port 49355
+JavaScript error: resource://gre/modules/Sqlite.jsm, line 1030: Error: Sqlite.jsm has been shutdown. Cannot open connection to: /var/folders/0k/fk2yv1891fq63cfv3nwpz6t00000gq/T/rust_mozprofileirquOK/protections.sqlite
+1613722820271	geckodriver	INFO	Listening on 127.0.0.1:49641
+1613722820283	mozrunner::runner	INFO	Running command: "/Applications/Firefox Nightly.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/0k/fk2yv1891fq63cfv3nwpz6t00000gq/T/rust_mozprofileb6Nkzf"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1613722823984	Marionette	INFO	Listening on port 49650
+1613722824015	Marionette	WARN	TLS certificate errors will be ignored for this session
+1613722829055	Marionette	INFO	Stopped listening on port 49650
+1613722882270	geckodriver	INFO	Listening on 127.0.0.1:50039
+1613722882293	mozrunner::runner	INFO	Running command: "/Applications/Firefox Nightly.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/0k/fk2yv1891fq63cfv3nwpz6t00000gq/T/rust_mozprofileSSJeEN"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1613722886516	Marionette	INFO	Listening on port 50048
+1613722886547	Marionette	WARN	TLS certificate errors will be ignored for this session
+1613722888803	Marionette	INFO	Stopped listening on port 50048
+JavaScript error: resource://gre/modules/Sqlite.jsm, line 1030: Error: Sqlite.jsm has been shutdown. Cannot open connection to: /var/folders/0k/fk2yv1891fq63cfv3nwpz6t00000gq/T/rust_mozprofileSSJeEN/protections.sqlite
+1613722992098	geckodriver	INFO	Listening on 127.0.0.1:50639
+1613722992114	mozrunner::runner	INFO	Running command: "/Applications/Firefox Nightly.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/0k/fk2yv1891fq63cfv3nwpz6t00000gq/T/rust_mozprofileyglFlh"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1613722995697	Marionette	INFO	Listening on port 50648
+1613722995736	Marionette	WARN	TLS certificate errors will be ignored for this session
+1613722997901	Marionette	INFO	Stopped listening on port 50648
+1613723042105	geckodriver	INFO	Listening on 127.0.0.1:50991
+1613723042128	mozrunner::runner	INFO	Running command: "/Applications/Firefox Nightly.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/0k/fk2yv1891fq63cfv3nwpz6t00000gq/T/rust_mozprofileG1Oru5"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1613723046052	Marionette	INFO	Listening on port 51000
+1613723046081	Marionette	WARN	TLS certificate errors will be ignored for this session
+1613723815795	geckodriver	INFO	Listening on 127.0.0.1:54018
+1613723816802	mozrunner::runner	INFO	Running command: "/Applications/Firefox Nightly.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/0k/fk2yv1891fq63cfv3nwpz6t00000gq/T/rust_mozprofileWQNdrc"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1613723821139	Marionette	INFO	Listening on port 54033
+1613723821182	Marionette	WARN	TLS certificate errors will be ignored for this session
+1613723919043	geckodriver	INFO	Listening on 127.0.0.1:54619
+1613723920057	mozrunner::runner	INFO	Running command: "/Applications/Firefox Nightly.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/0k/fk2yv1891fq63cfv3nwpz6t00000gq/T/rust_mozprofilefBCEEl"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1613723924370	Marionette	INFO	Listening on port 54636
+1613723924424	Marionette	WARN	TLS certificate errors will be ignored for this session
+1613723935499	Marionette	INFO	Stopped listening on port 54636
+1613724737377	geckodriver	INFO	Listening on 127.0.0.1:58176
+1613724738387	mozrunner::runner	INFO	Running command: "/Applications/Firefox Nightly.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/0k/fk2yv1891fq63cfv3nwpz6t00000gq/T/rust_mozprofile0l5tYk"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1613724741886	Marionette	INFO	Listening on port 58191
+1613724741928	Marionette	WARN	TLS certificate errors will be ignored for this session
+1613724745931	Marionette	INFO	Stopped listening on port 58191
+1613724777562	geckodriver	INFO	Listening on 127.0.0.1:58478
+1613724777576	mozrunner::runner	INFO	Running command: "/Applications/Firefox Nightly.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/0k/fk2yv1891fq63cfv3nwpz6t00000gq/T/rust_mozprofilesi2bwL"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1613724780938	Marionette	INFO	Listening on port 58487
+1613724781005	Marionette	WARN	TLS certificate errors will be ignored for this session
+1613724787871	Marionette	WARN	Ignoring event 'pageshow' because document has an invalid readyState of 'uninitialized'.
+1613724790790	Marionette	INFO	Stopped listening on port 58487
+JavaScript error: resource://gre/actors/AutoCompleteChild.jsm, line 125: Error: Invalid autocomplete selectedIndex
+1613733303468	Marionette	INFO	Stopped listening on port 51000
+1613738133312	Marionette	INFO	Stopped listening on port 54033
+1613743267427	geckodriver	INFO	Listening on 127.0.0.1:60483
+1613743268438	mozrunner::runner	INFO	Running command: "/Applications/Firefox Nightly.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/0k/fk2yv1891fq63cfv3nwpz6t00000gq/T/rust_mozprofileKNkv5v"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1613743275395	Marionette	INFO	Listening on port 60498
+1613743275531	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://moodle.fhgr.ch/lib/requirejs.php/1611703476/core/first.js, line 409: unreachable code after return statement
+1613743337304	geckodriver	INFO	Listening on 127.0.0.1:60898
+1613743337330	mozrunner::runner	INFO	Running command: "/Applications/Firefox Nightly.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/0k/fk2yv1891fq63cfv3nwpz6t00000gq/T/rust_mozprofileyz61j0"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1613743341726	Marionette	INFO	Listening on port 60907
+1613743341832	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://moodle.fhgr.ch/lib/requirejs.php/1611703476/core/first.js, line 409: unreachable code after return statement
+1613743388634	geckodriver	INFO	Listening on 127.0.0.1:61208
+1613743388652	mozrunner::runner	INFO	Running command: "/Applications/Firefox Nightly.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/0k/fk2yv1891fq63cfv3nwpz6t00000gq/T/rust_mozprofilebfdeLK"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1613743392986	Marionette	INFO	Listening on port 61217
+1613743393041	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://moodle.fhgr.ch/lib/requirejs.php/1611703476/core/first.js, line 409: unreachable code after return statement
+1613743408105	Marionette	INFO	Stopped listening on port 61217
+1613743433470	geckodriver	INFO	Listening on 127.0.0.1:61500
+1613743433483	mozrunner::runner	INFO	Running command: "/Applications/Firefox Nightly.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/0k/fk2yv1891fq63cfv3nwpz6t00000gq/T/rust_mozprofile1R30Q1"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1613743438343	Marionette	INFO	Listening on port 61509
+1613743438457	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://moodle.fhgr.ch/lib/requirejs.php/1611703476/core/first.js, line 409: unreachable code after return statement
+1613743457585	Marionette	INFO	Stopped listening on port 61509
+1613743460206	Marionette	INFO	Stopped listening on port 60907
+1613743469810	Marionette	INFO	Stopped listening on port 60498
+1613743479085	geckodriver	INFO	Listening on 127.0.0.1:61795
+1613743479099	mozrunner::runner	INFO	Running command: "/Applications/Firefox Nightly.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/0k/fk2yv1891fq63cfv3nwpz6t00000gq/T/rust_mozprofile9Qby2x"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1613743483938	Marionette	INFO	Listening on port 61804
+1613743483995	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://moodle.fhgr.ch/lib/requirejs.php/1611703476/core/first.js, line 409: unreachable code after return statement
+1613743505533	Marionette	INFO	Stopped listening on port 61804
+1613743568265	geckodriver	INFO	Listening on 127.0.0.1:62258
+1613743568279	mozrunner::runner	INFO	Running command: "/Applications/Firefox Nightly.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/0k/fk2yv1891fq63cfv3nwpz6t00000gq/T/rust_mozprofilerQuY3F"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1613743572536	Marionette	INFO	Listening on port 62267
+1613743572635	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://moodle.fhgr.ch/lib/requirejs.php/1611703476/core/first.js, line 409: unreachable code after return statement
+1613743580657	Marionette	INFO	Stopped listening on port 62267
+1613744078924	geckodriver	INFO	Listening on 127.0.0.1:64449
+1613744078938	mozrunner::runner	INFO	Running command: "/Applications/Firefox Nightly.app/Contents/MacOS/firefox-bin" "--marionette" "--headless" "-foreground" "-no-remote" "-profile" "/var/folders/0k/fk2yv1891fq63cfv3nwpz6t00000gq/T/rust_mozprofilemKaWjh"
+*** You are running in headless mode.
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+1613744081187	Marionette	INFO	Listening on port 64458
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+1613744081228	Marionette	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+JavaScript warning: https://moodle.fhgr.ch/lib/requirejs.php/1611703476/core/first.js, line 409: unreachable code after return statement
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer
+1613744113829	geckodriver	INFO	Listening on 127.0.0.1:64671
+1613744113841	mozrunner::runner	INFO	Running command: "/Applications/Firefox Nightly.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/0k/fk2yv1891fq63cfv3nwpz6t00000gq/T/rust_mozprofiledL1TDq"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1613744116510	Marionette	INFO	Listening on port 64680
+1613744116546	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://moodle.fhgr.ch/lib/requirejs.php/1611703476/core/first.js, line 409: unreachable code after return statement
+1613744117810	Marionette	INFO	Stopped listening on port 64680
+1613744326234	geckodriver	INFO	Listening on 127.0.0.1:49239
+1613744326248	mozrunner::runner	INFO	Running command: "/Applications/Firefox Nightly.app/Contents/MacOS/firefox-bin" "--marionette" "-foreground" "-no-remote" "-profile" "/var/folders/0k/fk2yv1891fq63cfv3nwpz6t00000gq/T/rust_mozprofilep243AW"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1613744332156	Marionette	INFO	Listening on port 49248
+1613744332186	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://moodle.fhgr.ch/lib/requirejs.php/1611703476/core/first.js, line 409: unreachable code after return statement
+1613744334178	Marionette	INFO	Stopped listening on port 49248
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+Exiting due to channel error.
+Exiting due to channel error.
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+Exiting due to channel error.

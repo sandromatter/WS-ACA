@@ -1,2 +1,3 @@
-src/geckodriver.log
 .vscode
+src/geckodriver.log
+jupyter-notebook

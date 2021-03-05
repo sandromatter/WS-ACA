@@ -9,6 +9,8 @@ verify_ssl = true
 selenium = "*"
 requests = "*"
 beautifulsoup4 = "*"
+notebook = "*"
+lxml = "*"
 
 [requires]
 python_version = "3.8"
