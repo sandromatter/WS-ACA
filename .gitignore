@@ -1,5 +1,6 @@
+__pycache__
 .vscode
 ._geckodriver
 src/geckodriver.log
 jupyter-notebook
-__pycache__
+articles.json

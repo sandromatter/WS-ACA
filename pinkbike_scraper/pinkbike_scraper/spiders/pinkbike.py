@@ -55,12 +55,12 @@ class PinkbikeSpider(scrapy.Spider):
         loader.add_xpath('article_meta_title', '/html/head/title')
         loader.add_xpath('article_meta_keywords', '//meta[@name="keywords"]/@content')
         loader.add_xpath('article_meta_description', '//meta[@name="description"]/@content')
-        loader.add_xpath('article_number_of_comments', '//*[@id="commenttop"]')
         loader.add_xpath('article_published_time', '//meta[@property="article:published_time"]/@content')
-        loader.add_xpath('article_comment_username', '//*[@class="cmcont"]/div/a[1]')
-        # 'article_comment_flag_number': response.xpath("//meta[@property='article:published_time']/@content").get(),
-        # 'article_comment_date': response.xpath("//meta[@property='article:published_time']/@content").get(),
-        # 'article_comment_upvotes': response.xpath("//meta[@property='article:published_time']/@content").get(),
-        # 'article_comment_downvotes': response.xpath("//meta[@property='article:published_time']/@content").get(),
-        # 'article_comment_content': response.xpath("//meta[@property='article:published_time']/@content").get(),
-        yield loader.load_item()    
+        loader.add_xpath('article_number_of_comments', '//*[@id="commenttop"]')
+        loader.add_xpath('article_comment_username', '//*[contains(@class, "cmcont")]/div[1]/a[1]')
+        loader.add_xpath('article_comment_date', '//*[contains(@class, "cmcont")]/div[1]/a[@class="time"]')
+        loader.add_xpath('article_comment_upvotes', '//span[@class="pcu "]')
+        loader.add_xpath('article_comment_downvotes', '//span[@class="pcd "]')
+        loader.add_xpath('article_comment_content', '//*[contains(@class, "cmcont")]/div[@class="comtext"]')
+        # loader.add_xpath('article_comment_flag_number', '//*[contains(@class, "cmcont")]/div[1]/a[2]')
+        yield loader.load_item()
