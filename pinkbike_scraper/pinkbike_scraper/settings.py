@@ -1,3 +1,7 @@
+# ---------------------------------------------------------------------------------------
+#
+# settings.py
+#
 # Scrapy settings for pinkbike_scraper project
 #
 # For simplicity, this file contains only settings considered important or
@@ -6,21 +10,27 @@
 #     https://docs.scrapy.org/en/latest/topics/settings.html
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
+# 
+# ---------------------------------------------------------------------------------------
+# Variables
+# ---------------------------------------------------------------------------------------
 
 BOT_NAME = 'pinkbike_scraper'
 
 SPIDER_MODULES = ['pinkbike_scraper.spiders']
 NEWSPIDER_MODULE = 'pinkbike_scraper.spiders'
 
-
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36"
+
+# Connections string to connect to sqlite db
+CONNECTION_STRING = "sqlite:///pinkbike_database.db"
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
 
 # Encode output in utf-8
-FEED_EXPORT_ENCODING = "utf-8"
+# FEED_EXPORT_ENCODING = "utf-8"
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -65,10 +75,9 @@ FEED_EXPORT_ENCODING = "utf-8"
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-# ITEM_PIPELINES = {
-#    'pinkbike_scraper.pipelines.PinkbikeScraperPipeline': 300,
-# }
-
+ITEM_PIPELINES = {
+   'pinkbike_scraper.pipelines.StoreToDatabasePipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html

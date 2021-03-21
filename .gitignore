@@ -4,3 +4,4 @@ __pycache__
 src/geckodriver.log
 jupyter-notebook
 articles.json
+pinkbike_scraper/pinkbike_scraper/pinkbike_database.db
