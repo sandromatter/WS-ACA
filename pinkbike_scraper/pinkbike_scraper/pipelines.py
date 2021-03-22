@@ -15,7 +15,6 @@
 
 from sqlalchemy.orm import sessionmaker
 from .models import Article, Comment, CommentAuthor, ArticleAuthor, ArticleTag, ArticleKeyword, db_connect, create_table
-from scrapy.exceptions import DropItem
 import logging
 
 
@@ -51,14 +50,6 @@ class StoreToDatabasePipeline(object):
         if article_author is None:
             article_author = ArticleAuthor(article_author_name = item["article_author_name"])
 
-        # try:
-        #     self.session.add(article_author)
-        # except:
-        #     self.session.rollback()
-        #     raise
-        # finally:
-        #     self.session.commit()
-
         self.session.add(article_author)
         self.session.commit()
 
@@ -77,14 +68,6 @@ class StoreToDatabasePipeline(object):
         article.article_meta_description = item["article_meta_description"]
         article.article_publishing_date = item["article_publishing_date"]
 
-        # try:
-        #     self.session.add(article)
-        # except:
-        #     self.session.rollback()
-        #     raise
-        # finally:
-        #     self.session.commit()
-
         self.session.add(article)
         self.session.commit()
 
@@ -99,14 +82,6 @@ class StoreToDatabasePipeline(object):
                 if tag is None:  # the current tag exists
                     tag = ArticleTag(article_tag_name = i)
                     article.article_tag.append(tag)
-
-        # try:
-        #     self.session.add(article)
-        # except:
-        #     self.session.rollback()
-        #     raise
-        # finally:
-        #     self.session.commit()
 
         self.session.add(article)
         self.session.commit()
@@ -123,14 +98,6 @@ class StoreToDatabasePipeline(object):
                     keyword = ArticleKeyword(article_keyword_name = j)
                     article.article_keyword.append(keyword)
 
-        # try:
-        #     self.session.add(article)
-        # except:
-        #     self.session.rollback()
-        #     raise
-        # finally:
-        #     self.session.commit()
-
         self.session.add(article)
         self.session.commit()
 
@@ -145,40 +112,32 @@ class StoreToDatabasePipeline(object):
                 if comment_author is None:  # the current comment_author exists
                     comment_author = CommentAuthor(comment_author_name = k)
 
-        # try:
-        #     self.session.add(comment_author)
-        #     self.session.commit()
-        # except:
-        #     self.session.rollback()
-        #     raise
-        # finally:
-        #     self.session.close()
-
         self.session.add(comment_author)
         self.session.commit()
 
 
         # Check if the Comment already exists
-        comment = (
-            self.session.query(Comment)
-            .filter_by(comment_author_id = comment_author.id, comment_publishing_date = item["comment_publishing_date"])
-            .first()
-        )
+        if "comment_publishing_date" in item:
+            for x in item["comment_publishing_date"]:
 
-        if comment is None:
-            comment = Comment(comment_author_id = comment_author.id, comment_publishing_date = item["comment_publishing_date"])
+                comment = (
+                    self.session.query(Comment)
+                    .filter_by(comment_author_id = comment_author.id, article_id = article.id, comment_publishing_date = x)
+                    .first()
+                )
 
-        comment.comment_upvotes = item["comment_upvotes"]
-        comment.comment_downvotes = item["comment_downvotes"]
-        comment.comment_content = item["comment_content"]
+                # check whether the current comment already exists in the database
+                if comment is None:
+                   comment = Comment(comment_author_id = comment_author.id, article_id = article.id, comment_publishing_date = x)
 
-        # try:
-        #     self.session.add(comment)
-        # except:
-        #     self.session.rollback()
-        #     raise
-        # finally:
-        #     self.session.commit()
+                for x in item["comment_upvotes"]:
+                    comment.comment_upvotes = x
+
+                for x in item["comment_downvotes"]:
+                    comment.comment_downvotes = x
+
+                for x in item["comment_content"]:
+                    comment.comment_content = x
 
         self.session.add(comment)
         self.session.commit()

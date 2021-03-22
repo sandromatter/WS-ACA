@@ -8,6 +8,8 @@ verify_ssl = true
 [packages]
 scrapy = "*"
 sqlalchemy = "*"
+scrapy-user-agents = "*"
+scrapy-proxy-pool = "*"
 
 [requires]
 python_version = "3.8"

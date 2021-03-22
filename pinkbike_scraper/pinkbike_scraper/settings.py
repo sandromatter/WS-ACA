@@ -21,13 +21,16 @@ SPIDER_MODULES = ['pinkbike_scraper.spiders']
 NEWSPIDER_MODULE = 'pinkbike_scraper.spiders'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36"
+# USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36"
 
 # Connections string to connect to sqlite db
 CONNECTION_STRING = "sqlite:///pinkbike_database.db"
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
+
+# Enable proxy pool
+PROXY_POOL_ENABLED = True
 
 # Encode output in utf-8
 # FEED_EXPORT_ENCODING = "utf-8"
@@ -61,6 +64,13 @@ ROBOTSTXT_OBEY = True
 #    'pinkbike_scraper.middlewares.PinkbikeScraperSpiderMiddleware': 543,
 #}
 
+DOWNLOADER_MIDDLEWARES = {
+   'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
+   'scrapy_user_agents.middlewares.RandomUserAgentMiddleware': 400,
+   'scrapy_proxy_pool.middlewares.ProxyPoolMiddleware': 610,
+   'scrapy_proxy_pool.middlewares.BanDetectionMiddleware': 620,
+}
+
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
@@ -91,10 +101,13 @@ ITEM_PIPELINES = {
 #AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0
 # Enable showing throttling stats for every response received:
 #AUTOTHROTTLE_DEBUG = False
+# Change download delay time:
+# DOWNLOAD_DELAY = 5.0
+
 
 # Enable and configure HTTP caching (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings
-#HTTPCACHE_ENABLED = True
+HTTPCACHE_ENABLED = True
 #HTTPCACHE_EXPIRATION_SECS = 0
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []

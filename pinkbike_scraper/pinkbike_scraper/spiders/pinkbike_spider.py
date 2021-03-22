@@ -7,7 +7,6 @@
 # ---------------------------------------------------------------------------------------
 
 import scrapy
-from scrapy import loader
 from ..items import PinkbikeScraperItem
 from scrapy.loader import ItemLoader
 
@@ -28,6 +27,7 @@ class PinkbikeSpider(scrapy.Spider):
 
         self.logger.info('Parse function called on {}'.format(response.url))
         articles = response.xpath('//*[@class="news-box2"]')
+
         for article in articles:
             loader = ItemLoader(item = PinkbikeScraperItem(), selector = article)
             
@@ -45,19 +45,25 @@ class PinkbikeSpider(scrapy.Spider):
         #     PinkbikeSpider.url_parameter_month += 1
         #     yield response.follow(next_month, callback=self.parse)
 
+
     def parse_article(self, response):
+
         article_item = response.meta['article_item']
-        loader = ItemLoader(item = article_item, response = response)
+        comments = response.xpath('//*[contains(@class, "cmcont")]')
 
-        loader.add_xpath('article_meta_title', '/html/head/title')
-        loader.add_xpath('article_keyword_name', '//meta[@name="keywords"]/@content')
-        loader.add_xpath('article_meta_description', '//meta[@name="description"]/@content')
-        loader.add_xpath('article_publishing_date', '//meta[@property="article:published_time"]/@content')
-        loader.add_xpath('comment_author_name', '//*[contains(@class, "cmcont")]/div[1]/a[1]')
-        loader.add_xpath('comment_publishing_date', '//*[contains(@class, "cmcont")]/div[1]/a[@class="time"]')
-        loader.add_xpath('comment_upvotes', '//span[contains(@class, "pcu")]')
-        loader.add_xpath('comment_downvotes', '//span[contains(@class, "pcd")]')
-        loader.add_xpath('comment_content', '//*[contains(@class, "cmcont")]/div[@class="comtext"]')
-        # loader.add_xpath('article_comment_flag_number', '//*[contains(@class, "cmcont")]/div[1]/a[2]')
+        for comment in comments:
+            loader = ItemLoader(item = article_item, selector = comment)
 
-        yield loader.load_item()
+            loader.add_xpath('article_meta_title', '/html/head/title')
+            loader.add_xpath('article_keyword_name', '//meta[@name="keywords"]/@content')
+            loader.add_xpath('article_meta_description', '//meta[@name="description"]/@content')
+            loader.add_xpath('article_publishing_date', '//meta[@property="article:published_time"]/@content')
+
+            loader.add_xpath('comment_author_name', '//*[contains(@class, "cmcont")]/div[1]/a[1]')
+            loader.add_xpath('comment_publishing_date', '//*[contains(@class, "cmcont")]/div[1]/a[@class="time"]')
+            loader.add_xpath('comment_upvotes', '//span[contains(@class, "pcu")]')
+            loader.add_xpath('comment_downvotes', '//span[contains(@class, "pcd")]')
+            loader.add_xpath('comment_content', '//*[contains(@class, "cmcont")]/div[@class="comtext"]')
+            # loader.add_xpath('article_comment_flag_number', './/*[contains(@class, "cmcont")]/div[1]/a[2]')
+
+            yield loader.load_item()

@@ -8,11 +8,11 @@
 # Import packages
 # ---------------------------------------------------------------------------------------
 
-from sqlalchemy import create_engine, Column, Table, ForeignKey, MetaData
-from sqlalchemy import Integer, String, DateTime, Text 
+from sqlalchemy import create_engine, Column, Table, ForeignKey
+from sqlalchemy import Integer, Text 
 from sqlalchemy.ext.declarative import declarative_base
 from scrapy.utils.project import get_project_settings
-from sqlalchemy.orm import backref, relationship
+from sqlalchemy.orm import relationship
 
 
 # ---------------------------------------------------------------------------------------
@@ -93,6 +93,8 @@ class Article(Base):
 
     article_tag = relationship('ArticleTag', secondary='article_to_tag', lazy='dynamic', backref="article")  # M-to-M for article and tags
     article_keyword = relationship('ArticleKeyword', secondary='article_to_keyword', lazy='dynamic', backref="article")  # M-to-M for article and keyword
+    comments = relationship('Comment', backref="article") # O-to-M for article and comments
+
 
 
 # article_tag
@@ -132,9 +134,11 @@ class Comment(Base):
     __tablename__ = "comment"
 
     id = Column(Integer, primary_key=True)
-    comment_author_id = Column(Integer, ForeignKey('comment_author.id'))  # Many quotes to one author
 
-    comment_publishing_date = Column('article_publishing_date', Integer(), nullable=False)
+    article_id = Column(Integer, ForeignKey('article.id'))  # Many comments to one article
+    comment_author_id = Column(Integer, ForeignKey('comment_author.id'))  # Many comments to one author
+
+    comment_publishing_date = Column('comment_publishing_date', Integer(), nullable=False)
     comment_upvotes =  Column('comment_upvotes', Integer(), default=0, nullable=False)
     comment_downvotes = Column('comment_downvotes', Integer(), default=0, nullable=False)
     comment_content = Column('comment_content', Text(), nullable=True)
@@ -149,4 +153,4 @@ class CommentAuthor(Base):
 
     comment_author_name = Column('comment_author_name', Text(), nullable=False)
 
-    comments = relationship('Comment', backref="comment_author") # O-to-M for article and comments
+    comments = relationship('Comment', backref="comment_author") # O-to-M for author and comments
