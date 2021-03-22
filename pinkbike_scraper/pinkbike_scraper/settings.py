@@ -24,7 +24,16 @@ NEWSPIDER_MODULE = 'pinkbike_scraper.spiders'
 # USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36"
 
 # Connections string to connect to sqlite db
-CONNECTION_STRING = "sqlite:///pinkbike_database.db"
+# CONNECTION_STRING = "sqlite:///pinkbike_database.db"
+# Connections string to connect to MySQL db
+CONNECTION_STRING = "{drivername}://{user}:{passwd}@{host}:{port}/{db_name}?charset=utf8".format(
+     drivername="mysql",
+     user="pinkbike_scraper",
+     passwd="thisisasafepassword",
+     host="localhost",
+     port="3306",
+     db_name="pinkbike_database",
+)
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
@@ -67,8 +76,8 @@ PROXY_POOL_ENABLED = True
 DOWNLOADER_MIDDLEWARES = {
    'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
    'scrapy_user_agents.middlewares.RandomUserAgentMiddleware': 400,
-   'scrapy_proxy_pool.middlewares.ProxyPoolMiddleware': 610,
-   'scrapy_proxy_pool.middlewares.BanDetectionMiddleware': 620,
+   # 'scrapy_proxy_pool.middlewares.ProxyPoolMiddleware': 610,
+   # 'scrapy_proxy_pool.middlewares.BanDetectionMiddleware': 620,
 }
 
 # Enable or disable downloader middlewares
@@ -107,7 +116,7 @@ ITEM_PIPELINES = {
 
 # Enable and configure HTTP caching (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings
-HTTPCACHE_ENABLED = True
+#HTTPCACHE_ENABLED = True
 #HTTPCACHE_EXPIRATION_SECS = 0
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
