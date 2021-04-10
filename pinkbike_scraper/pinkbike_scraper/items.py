@@ -13,6 +13,8 @@
 
 import scrapy
 from itemloaders.processors import TakeFirst, MapCompose, Identity
+from sqlalchemy.sql.elements import Null
+from sqlalchemy.sql.expression import null
 from w3lib.html import remove_tags
 from datetime import datetime
 
@@ -32,6 +34,11 @@ def convert_article_publishing_date(text):
 def convert_comment_publishing_date(text):
     # convert string "(Jan 31, 2020 at 12:28)" to Python date
     return int(datetime.strptime(text, "(%b %d, %Y at %H:%M)").timestamp())
+
+def convert_comment_html_id_integer(text):
+    # strip the string of comment id and return int
+    text = text.strip("cm")
+    return int(text)
 
 def convert_upvotes_integer(text):
     # strip the string comments and return int
@@ -81,15 +88,20 @@ class PinkbikeScraperItem(scrapy.Item):
     )
 
     article_meta_description = scrapy.Field(
-        input_processor = MapCompose(remove_tags),
+        input_processor = MapCompose(remove_tags, str.strip),
         output_processor = TakeFirst()
     )
+
+    # comment_html_id = scrapy.Field(
+    #     input_processor = MapCompose(remove_tags, convert_comment_html_id_integer),
+    #     output_processor = Identity()
+    # )
 
     article_publishing_date = scrapy.Field(
         input_processor = MapCompose(remove_tags, convert_article_publishing_date),
         output_processor = TakeFirst()
     )
-    
+
     comment_author_name = scrapy.Field(
         input_processor = MapCompose(remove_tags),
         output_processor = Identity()

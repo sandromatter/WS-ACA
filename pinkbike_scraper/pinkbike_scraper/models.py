@@ -13,6 +13,7 @@ from sqlalchemy import Integer, Text
 from sqlalchemy.ext.declarative import declarative_base
 from scrapy.utils.project import get_project_settings
 from sqlalchemy.orm import relationship
+from sqlalchemy.sql.elements import Null
 
 
 # ---------------------------------------------------------------------------------------
@@ -138,6 +139,7 @@ class Comment(Base):
     article_id = Column(Integer, ForeignKey('article.id'))  # Many comments to one article
     comment_author_id = Column(Integer, ForeignKey('comment_author.id'))  # Many comments to one author
 
+    # comment_html_id = Column('comment_html_id', Integer(), nullable=False)
     comment_publishing_date = Column('comment_publishing_date', Integer(), nullable=False)
     comment_upvotes =  Column('comment_upvotes', Integer(), default=0, nullable=False)
     comment_downvotes = Column('comment_downvotes', Integer(), default=0, nullable=False)

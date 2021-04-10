@@ -71,14 +71,13 @@ class StoreToDatabasePipeline(object):
         self.session.add(article)
         self.session.commit()
 
-
-        # Check if the ArticleTag already exists
+ 
         if "article_tag_name" in item:
             for i in item["article_tag_name"]:
 
+                # Check if the ArticleTag already exists
                 tag = self.session.query(ArticleTag).filter_by(article_tag_name = i).first()
 
-                # check whether the current tag already exists in the database
                 if tag is None:  # the current tag exists
                     tag = ArticleTag(article_tag_name = i)
                     article.article_tag.append(tag)
@@ -112,34 +111,36 @@ class StoreToDatabasePipeline(object):
                 if comment_author is None:  # the current comment_author exists
                     comment_author = CommentAuthor(comment_author_name = k)
 
-        self.session.add(comment_author)
+                self.session.add(comment_author)
+        
         self.session.commit()
 
 
         # Check if the Comment already exists
         if "comment_publishing_date" in item:
-            for x in item["comment_publishing_date"]:
+            for x in range(len(item["comment_publishing_date"])):
 
+                current_comment_author = self.session.query(CommentAuthor).filter_by(comment_author_name = item["comment_author_name"][x]).first()
+                
                 comment = (
                     self.session.query(Comment)
-                    .filter_by(comment_author_id = comment_author.id, article_id = article.id, comment_publishing_date = x)
+                    .filter_by(comment_author_id = current_comment_author.id, article_id = article.id, comment_publishing_date = item["comment_publishing_date"][x])
                     .first()
                 )
 
-                # check whether the current comment already exists in the database
                 if comment is None:
-                   comment = Comment(comment_author_id = comment_author.id, article_id = article.id, comment_publishing_date = x)
+                   comment = Comment(comment_author_id = current_comment_author.id, article_id = article.id, comment_publishing_date = item["comment_publishing_date"][x])
+                else:
+                    print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ Doppelter Eintrag @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+                    print(comment.comment_author_id, comment.comment_content, item["comment_publishing_date"][x])
+                    print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
 
-                for x in item["comment_upvotes"]:
-                    comment.comment_upvotes = x
+                comment.comment_upvotes = item["comment_upvotes"][x]
+                comment.comment_downvotes = item["comment_downvotes"][x]
+                comment.comment_content = item["comment_content"][x]
+  
+                self.session.add(comment)
 
-                for x in item["comment_downvotes"]:
-                    comment.comment_downvotes = x
-
-                for x in item["comment_content"]:
-                    comment.comment_content = x
-
-        self.session.add(comment)
         self.session.commit()
 
 

@@ -24,16 +24,16 @@ NEWSPIDER_MODULE = 'pinkbike_scraper.spiders'
 # USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36"
 
 # Connections string to connect to sqlite db
-# CONNECTION_STRING = "sqlite:///pinkbike_database.db"
+CONNECTION_STRING = "sqlite:///pinkbike_database.db"
 # Connections string to connect to MySQL db
-CONNECTION_STRING = "{drivername}://{user}:{passwd}@{host}:{port}/{db_name}?charset=utf8".format(
-     drivername="mysql",
-     user="pinkbike_scraper",
-     passwd="thisisasafepassword",
-     host="localhost",
-     port="3306",
-     db_name="pinkbike_database",
-)
+# CONNECTION_STRING = "{drivername}://{user}:{passwd}@{host}:{port}/{db_name}?charset=utf8".format(
+#      drivername="mysql",
+#      user="pinkbike_scraper",
+#      passwd="thisisasafepassword",
+#      host="localhost",
+#      port="3306",
+#      db_name="pinkbike_database",
+# )
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
