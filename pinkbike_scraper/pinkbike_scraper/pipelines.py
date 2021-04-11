@@ -14,7 +14,7 @@
 # ---------------------------------------------------------------------------------------
 
 from sqlalchemy.orm import sessionmaker
-from .models import Article, Comment, CommentAuthor, ArticleAuthor, ArticleTag, ArticleKeyword, db_connect, create_table
+from .models import Article, Comment, CommentAuthor, ArticleAuthor, ArticleTag, db_connect, create_table
 import logging
 
 
@@ -86,21 +86,6 @@ class StoreToDatabasePipeline(object):
         self.session.commit()
 
 
-        # Check if the ArticleKeyword already exists
-        if "article_keyword_name" in item:
-            for j in item["article_keyword_name"]:
-
-                keyword = self.session.query(ArticleKeyword).filter_by(article_keyword_name = j).first()
-
-                # check whether the current keyword already exists in the database
-                if keyword is None:  # the current keyword exists
-                    keyword = ArticleKeyword(article_keyword_name = j)
-                    article.article_keyword.append(keyword)
-
-        self.session.add(article)
-        self.session.commit()
-
-
         # Check if the CommentAuthor already exists
         if "comment_author_name" in item:
             for k in item["comment_author_name"]:
@@ -117,24 +102,21 @@ class StoreToDatabasePipeline(object):
 
 
         # Check if the Comment already exists
-        if "comment_publishing_date" in item:
-            for x in range(len(item["comment_publishing_date"])):
+        if "comment_html_id" in item:
+            for x in range(len(item["comment_html_id"])):
 
                 current_comment_author = self.session.query(CommentAuthor).filter_by(comment_author_name = item["comment_author_name"][x]).first()
                 
                 comment = (
                     self.session.query(Comment)
-                    .filter_by(comment_author_id = current_comment_author.id, article_id = article.id, comment_publishing_date = item["comment_publishing_date"][x])
+                    .filter_by(comment_author_id = current_comment_author.id, article_id = article.id, comment_html_id = item["comment_html_id"][x])
                     .first()
                 )
 
                 if comment is None:
-                   comment = Comment(comment_author_id = current_comment_author.id, article_id = article.id, comment_publishing_date = item["comment_publishing_date"][x])
-                else:
-                    print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ Doppelter Eintrag @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
-                    print(comment.comment_author_id, comment.comment_content, item["comment_publishing_date"][x])
-                    print("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+                   comment = Comment(comment_author_id = current_comment_author.id, article_id = article.id, comment_html_id = item["comment_html_id"][x])
 
+                comment.comment_publishing_date = item["comment_publishing_date"][x]
                 comment.comment_upvotes = item["comment_upvotes"][x]
                 comment.comment_downvotes = item["comment_downvotes"][x]
                 comment.comment_content = item["comment_content"][x]
@@ -148,6 +130,8 @@ class StoreToDatabasePipeline(object):
 
     def process_item(self, item, spider):
         self.store_db(item)
-        logging.info(item)
-        logging.info("****Item stored in database****")
+        # logging.info("@@@@  ↓  @@@@  ↓  @@@@  ↓  @@@@  ↓  @@@@  ↓  Item stored in database  ↓  @@@@  ↓  @@@@  ↓  @@@@  ↓  @@@@  ↓  @@@@")
+        # logging.info(item)
+        # logging.info("@@@@  ↑  @@@@  ↑  @@@@  ↑  @@@@  ↑  @@@@  ↑  @@@@  ↑  @@@@  ↑  @@@@  ↑  @@@@  ↑  @@@@  ↑  @@@@  ↑  @@@@  ↑  @@@@  ↑  @@@@")
+        # logging.info("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
         return item

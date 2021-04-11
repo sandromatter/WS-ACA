@@ -26,7 +26,6 @@ from sqlalchemy.sql.elements import Null
     # article_title
     # article_url     
     # article_meta_title
-    # article_meta_keyword
     # article_meta_description
     # article_publishing_date
 
@@ -70,13 +69,6 @@ article_to_tag = Table('article_to_tag', Base.metadata,
     Column('article_tag_id', Integer, ForeignKey('article_tag.id'))
 )
 
-# Association Table for Many-to-Many relationship between Article and Keyword
-article_to_keyword = Table('article_to_keyword', Base.metadata,
-    Column('id', Integer, primary_key=True),
-    Column('article_id', Integer, ForeignKey('article.id')),
-    Column('article_keyword_id', Integer, ForeignKey('article_keyword.id'))
-)
-
 
 # article table
 
@@ -93,9 +85,7 @@ class Article(Base):
     article_publishing_date = Column('article_publishing_date', Integer(), nullable=False)
 
     article_tag = relationship('ArticleTag', secondary='article_to_tag', lazy='dynamic', backref="article")  # M-to-M for article and tags
-    article_keyword = relationship('ArticleKeyword', secondary='article_to_keyword', lazy='dynamic', backref="article")  # M-to-M for article and keyword
     comments = relationship('Comment', backref="article") # O-to-M for article and comments
-
 
 
 # article_tag
@@ -106,16 +96,6 @@ class ArticleTag(Base):
     id = Column(Integer, primary_key=True)
 
     article_tag_name = Column('article_tag_name', Text(), nullable=True)
-
-
-# article_keyword
-
-class ArticleKeyword(Base):
-    __tablename__ = "article_keyword"
-
-    id = Column(Integer, primary_key=True)
-
-    article_keyword_name = Column('article_keyword_name', Text(), nullable=True)
 
 
 # article_author
@@ -139,7 +119,7 @@ class Comment(Base):
     article_id = Column(Integer, ForeignKey('article.id'))  # Many comments to one article
     comment_author_id = Column(Integer, ForeignKey('comment_author.id'))  # Many comments to one author
 
-    # comment_html_id = Column('comment_html_id', Integer(), nullable=False)
+    comment_html_id = Column('comment_html_id', Integer(), nullable=False)
     comment_publishing_date = Column('comment_publishing_date', Integer(), nullable=False)
     comment_upvotes =  Column('comment_upvotes', Integer(), default=0, nullable=False)
     comment_downvotes = Column('comment_downvotes', Integer(), default=0, nullable=False)

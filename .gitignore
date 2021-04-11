@@ -8,3 +8,5 @@ articles.json
 pinkbike_scraper/pinkbike_scraper/pinkbike_database.db
 pinkbike_scraper/pinkbike_scraper/spiders/pinkbike_database.db
 pinkbike_scraper/pinkbike_scraper/spiders/pinkbike.json
+pinkbike_scraper/pinkbike_scraper/spiders/pinkbike_database.db-journal
+pinkbike_scraper/pinkbike_scraper/spiders/pinkbike_log.txt

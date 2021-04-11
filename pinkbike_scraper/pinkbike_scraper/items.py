@@ -23,10 +23,6 @@ from datetime import datetime
 # Program
 # ---------------------------------------------------------------------------------------
 
-def split_keywords(text):
-    text = [x.strip() for x in text.split(',')]
-    return text
-
 def convert_article_publishing_date(text):
     # convert string "2020-01-31T07:00:00-08:00" to Python date
     return int(datetime.strptime(text, "%Y-%m-%dT%H:%M:%S%z").timestamp())
@@ -82,20 +78,15 @@ class PinkbikeScraperItem(scrapy.Item):
         output_processor = TakeFirst()
     )
 
-    article_keyword_name = scrapy.Field(        
-        input_processor = MapCompose(remove_tags, split_keywords),
-        output_processor = Identity()
-    )
-
     article_meta_description = scrapy.Field(
         input_processor = MapCompose(remove_tags, str.strip),
         output_processor = TakeFirst()
     )
 
-    # comment_html_id = scrapy.Field(
-    #     input_processor = MapCompose(remove_tags, convert_comment_html_id_integer),
-    #     output_processor = Identity()
-    # )
+    comment_html_id = scrapy.Field(
+        input_processor = MapCompose(remove_tags, convert_comment_html_id_integer),
+        output_processor = Identity()
+    )
 
     article_publishing_date = scrapy.Field(
         input_processor = MapCompose(remove_tags, convert_article_publishing_date),
