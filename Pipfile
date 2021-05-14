@@ -10,6 +10,12 @@ scrapy = "*"
 sqlalchemy = "*"
 scrapy-user-agents = "*"
 scrapy-proxy-pool = "*"
+nltk = "*"
+pandas = "*"
+jupyter = "*"
+notebook = "*"
+contractions = "*"
+fasttext = "*"
 
 [requires]
 python_version = "3.8"
