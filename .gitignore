@@ -1,6 +1,7 @@
 .vscode
 __pycache__
 articles.json
+results.json
 jupyter-notebook
 
 pinkbike_scraper/pinkbike_scraper/pinkbike_database.db
@@ -12,3 +13,6 @@ pinkbike_scraper/pinkbike_scraper/spiders/pinkbike_log.txt
 pinkbike_analysis/.ipynb_checkpoints
 pinkbike_analysis/._pinkbike_analysis.ipynb
 pinkbike_analysis/src/*
+
+rar_scraper/rar_log.txt
+rar_scraper/rar_scraper/spiders/rar_log.txt
