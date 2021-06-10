@@ -76,7 +76,7 @@ class Article(Base):
     __tablename__ = "article"
 
     id = Column(Integer, primary_key=True)
-    article_author_id = Column(Integer, ForeignKey('article_author.id'))  # Many quotes to one author
+    article_author_id = Column(Integer, ForeignKey('article_author.id'))  # Many articles to one author
 
     article_title = Column('article_title', Text(), nullable=False)
     article_url = Column('article_url', Text(), nullable=False)

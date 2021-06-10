@@ -22,7 +22,6 @@ import logging
 # Program
 # ---------------------------------------------------------------------------------------
 
-
 class StoreToDatabasePipeline(object):
 
 
@@ -125,8 +124,8 @@ class StoreToDatabasePipeline(object):
 
         self.session.commit()
 
-
         return item
+        
 
     def process_item(self, item, spider):
         self.store_db(item)

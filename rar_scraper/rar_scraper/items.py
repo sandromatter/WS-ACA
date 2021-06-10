@@ -17,12 +17,11 @@ from sqlalchemy.sql.elements import Null
 from sqlalchemy.sql.expression import null
 from w3lib.html import remove_tags
 from datetime import datetime
-
+import re
 
 # ---------------------------------------------------------------------------------------
 # Program
 # ---------------------------------------------------------------------------------------
-
 
 def convert_race_date(text):
     # convert string "2020-01-31" to Python date
@@ -30,82 +29,77 @@ def convert_race_date(text):
 
 def convert_integer(text):
     # strip the string comments and return int
-    return int(text)
+    try:
+        text = int(text)
+    except:
+        text = str("")
+    return text
 
-# def convert_position_integer(text):
-#     # strip the string comments and return int
-#     text = text.strip("-")
-#     return int(text)
+def convert_position_integer(text):
+    # Split into "position" and "participants"
+    position_string = text
+    split_string = position_string.split("/", 1)
+    substring_position = split_string[0]
+    try:
+        text = int(substring_position)
+    except:
+        text = str("")
+    return text
 
-# def convert_participants_integer(text):
-#     # strip the string comments and return int
-#     text = text.strip("-")
-#     return int(text)
-
+def convert_participants_integer(text):
+    # Split into "position" and "participants"
+    position_string = text
+    split_string = position_string.split("/", 1)
+    substring_participants = split_string[1]
+    try:
+        text = int(substring_participants)
+    except:
+        text = str("")
+    return text
 
 class RarScraperItem(scrapy.Item):
 
-    result_rider_name = scrapy.Field(
+    rider_meta_url = scrapy.Field(
         input_processor = MapCompose(remove_tags),
         output_processor = TakeFirst()
     )
 
-    result_data_date = scrapy.Field(
+    rider_name = scrapy.Field(
+        input_processor = MapCompose(remove_tags, str.lower),
+        output_processor = TakeFirst()
+    )
+
+    result_bib = scrapy.Field(
+        input_processor = MapCompose(remove_tags, convert_integer),
+        output_processor = Identity()
+    )
+
+    result_position = scrapy.Field(
+        input_processor = MapCompose(remove_tags, convert_position_integer),
+        output_processor = Identity()
+    )
+
+    event_date = scrapy.Field(
         input_processor = MapCompose(remove_tags, convert_race_date),
-        output_processor = TakeFirst()
+        output_processor = Identity()
     )
 
-    result_data_event = scrapy.Field(
+    event_name = scrapy.Field(
         input_processor = MapCompose(remove_tags),
-        output_processor = TakeFirst()
+        output_processor = Identity()
     )
 
-    result_data_venue = scrapy.Field(
+    event_venue = scrapy.Field(
         input_processor = MapCompose(remove_tags),
-        output_processor = TakeFirst()
+        output_processor = Identity()
     )
 
-    result_data_category = scrapy.Field(
+    event_participants = scrapy.Field(
+        input_processor = MapCompose(remove_tags, convert_participants_integer),
+        output_processor = Identity()
+    )
+
+    category_name = scrapy.Field(
         input_processor = MapCompose(remove_tags),
-        output_processor = TakeFirst()
-    )
-
-    result_data_license_age = scrapy.Field(
-        input_processor = MapCompose(remove_tags),
-        output_processor = TakeFirst()
-    )
-
-    result_data_bib = scrapy.Field(
-        input_processor = MapCompose(remove_tags, convert_integer),
-        output_processor = TakeFirst()
-    )
-
-    result_data_sponsors = scrapy.Field(
-        input_processor = MapCompose(remove_tags),
-        output_processor = TakeFirst()
-    )
-
-    result_data_position = scrapy.Field(
-        input_processor = MapCompose(remove_tags),
-        output_processor = TakeFirst()
-    )
-
-    result_data_participants = scrapy.Field(
-        input_processor = MapCompose(remove_tags),
-        output_processor = TakeFirst()
-    )
-
-    result_data_fastest_time_rider = scrapy.Field(
-        input_processor = MapCompose(remove_tags, convert_integer),
-        output_processor = TakeFirst()
-    )
-
-    result_data_fastest_time_category = scrapy.Field(
-        input_processor = MapCompose(remove_tags, convert_integer),
-        output_processor = TakeFirst()
-    )
-
-    result_data_fastest_time_day = scrapy.Field(
-        input_processor = MapCompose(remove_tags, convert_integer),
-        output_processor = TakeFirst()
+        output_processor = Identity()
     )

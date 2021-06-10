@@ -37,35 +37,29 @@ class RarSpider(scrapy.Spider):
         results = response.xpath('//*[@id="container"]')
 
         for result in results:
-            try: 
-                loader = ItemLoader(item = RarScraperItem(), selector = result)
-                    
-                loader.add_xpath('result_rider_name', '//*[@id="h1-title"]')
-                loader.add_xpath('result_data_date', '//*[@id="T1"]/tbody/tr/td[2]/time/@datetime')
-                loader.add_xpath('result_data_event', '//*[@id="T1"]/tbody/tr/td[3]')
-                loader.add_xpath('result_data_venue', '//*[@id="T1"]/tbody/tr/td[5]')
-                loader.add_xpath('result_data_category', '//*[@id="T1"]/tbody/tr/td[6]')
-                loader.add_xpath('result_data_license_age', '//*[@id="T1"]/tbody/tr/td[7]')
-                loader.add_xpath('result_data_bib', '//*[@id="T1"]/tbody/tr/td[8]')
-                loader.add_xpath('result_data_sponsors', '//*[@id="T1"]/tbody/tr/td[9]')
-                loader.add_xpath('result_data_position', '//*[@id="T1"]/tbody/tr/td[10]')
-                loader.add_xpath('result_data_participants', '//*[@id="T1"]/tbody/tr/td[10]/span')
-                # loader.add_xpath('result_data_fastest_time_rider', '//*[@id="T1"]/tbody/tr/td[12]/@data-sb')
-                # loader.add_xpath('result_data_fastest_time_category', '//*[@id="T1"]/tbody/tr/td[13]/@data-sb')
-                # loader.add_xpath('result_data_fastest_time_day', '//*[@id="T1"]/tbody/tr/td[15]/@data-sb')
+            loader = ItemLoader(item = RarScraperItem(), selector = result)
+                
+            loader.add_xpath('rider_meta_url', '//meta[@property="og:url"]/@content')
+            loader.add_xpath('rider_name', '//*[@id="h1-title"]')
+            loader.add_xpath('category_name', '//*[@id="T1"]/tbody/tr/td[6]')
+            loader.add_xpath('event_name', '//*[@id="T1"]/tbody/tr/td[3]')
+            loader.add_xpath('event_date', '//*[@id="T1"]/tbody/tr/td[2]/time/@datetime')
+            loader.add_xpath('event_venue', '//*[@id="T1"]/tbody/tr/td[5]')
+            loader.add_xpath('event_participants', '//*[@id="T1"]/tbody/tr/td[10]/span')
+            loader.add_xpath('result_bib', '//*[@id="T1"]/tbody/tr/td[8]')
+            loader.add_xpath('result_position', '//*[@id="T1"]/tbody/tr/td[10]')
 
-                yield loader.load_item()
-
-            except:
-                next_page = 'https://www.rootsandrain.com/rider' + str(RarSpider.url_parameter_rider)
+            yield loader.load_item()
 
             next_page = 'https://www.rootsandrain.com/rider' + str(RarSpider.url_parameter_rider)
 
-        if RarSpider.url_parameter_rider <= 999999:
+        if RarSpider.url_parameter_rider <= 200000:
             RarSpider.url_parameter_rider += 1
+            logging.info("    ")
             logging.info("############################################  We're currently at this page:  ############################################")
             logging.info(next_page)
             logging.info("#########################################################################################################################")
+            logging.info("    ")
             yield response.follow(next_page, callback=self.parse)
 
 

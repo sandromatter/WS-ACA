@@ -1,4 +1,5 @@
 .vscode
+.scrapy
 __pycache__
 articles.json
 results.json
@@ -16,3 +17,7 @@ pinkbike_analysis/src/*
 
 rar_scraper/rar_log.txt
 rar_scraper/rar_scraper/spiders/rar_log.txt
+pinkbike_scraper/pinkbike_scraper/spiders/comments.json
+rar_scraper/rar_scraper/rar_log.txt
+rar_scraper/rar_scraper/rootsandrain_database.db
+rar_scraper/rar_scraper/rootsandrain_database.db-journal

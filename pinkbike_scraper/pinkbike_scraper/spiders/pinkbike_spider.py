@@ -53,9 +53,11 @@ class PinkbikeSpider(scrapy.Spider):
 
         if PinkbikeSpider.url_parameter_month <= 12:
             PinkbikeSpider.url_parameter_month += 1
+            logging.info("    ")
             logging.info("############################################  We're currently at this page:  ############################################")
             logging.info(next_page)
             logging.info("#########################################################################################################################")
+            logging.info("    ")
             yield response.follow(next_page, callback=self.parse)
 
         elif PinkbikeSpider.url_parameter_year <= 2021:

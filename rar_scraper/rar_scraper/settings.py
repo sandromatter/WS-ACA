@@ -12,15 +12,42 @@ BOT_NAME = 'rar_scraper'
 SPIDER_MODULES = ['rar_scraper.spiders']
 NEWSPIDER_MODULE = 'rar_scraper.spiders'
 
-
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'rar_scraper (+http://www.yourdomain.com)'
+# USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36"
+
+# Connections string to connect to sqlite db
+CONNECTION_STRING = "sqlite:///rootsandrain_database.db"
+# Connections string to connect to MySQL db
+# CONNECTION_STRING = "{drivername}://{user}:{passwd}@{host}:{port}/{db_name}?charset=utf8".format(
+#      drivername="mysql",
+#      user="pinkbike_scraper",
+#      passwd="thisisasafepassword",
+#      host="localhost",
+#      port="3306",
+#      db_name="pinkbike_database",
+# )
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
+
+# Enable proxy pool
+# PROXY_POOL_ENABLED = True
+
+# Enable HTTP Error 404s
+HTTPERROR_ALLOWED_CODES  = [301, 302, 404]
+
+# settings.py
+DUPEFILTER_CLASS = 'scrapy.dupefilters.BaseDupeFilter'
+
+DOWNLOADER_MIDDLEWARES = {
+   'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
+   'scrapy_user_agents.middlewares.RandomUserAgentMiddleware': 400,
+   # 'scrapy_proxy_pool.middlewares.ProxyPoolMiddleware': 610,
+   # 'scrapy_proxy_pool.middlewares.BanDetectionMiddleware': 620,
+}
 
 # Configure a delay for requests for the same website (default: 0)
 # See https://docs.scrapy.org/en/latest/topics/settings.html#download-delay
@@ -62,9 +89,9 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'rar_scraper.pipelines.RarScraperPipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'rar_scraper.pipelines.StoreToDatabasePipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html

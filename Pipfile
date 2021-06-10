@@ -15,12 +15,8 @@ pandas = "*"
 jupyter = "*"
 notebook = "*"
 contractions = "*"
-fasttext = "*"
-seaborn = "*"
-textblob = "*"
-pyLDAvis = "*"
-WordCloud = "*"
 ipython = "==7.10.0"
+fasttext = "*"
 
 [requires]
 python_version = "3.8"
