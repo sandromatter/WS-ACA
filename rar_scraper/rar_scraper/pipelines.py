@@ -77,7 +77,6 @@ class StoreToDatabasePipeline(object):
 
                 event.event_date = item["event_date"][k]
                 event.event_venue = item["event_venue"][k]
-                event.event_participants = item["event_participants"][k]
 
                 self.session.add(event)
         
@@ -87,17 +86,15 @@ class StoreToDatabasePipeline(object):
         if "result_position" in item:
             for j in range(len(item["result_position"])):
 
-                result = (
-                    self.session.query(Result)
-                    .filter_by(rider_id = rider.id, category_id = category.id, event_id = event.id, result_position = item["result_position"][j])
-                    .first()
-                )
+                current_event = self.session.query(Event).filter_by(event_name = item["event_name"][j]).first()
+                current_category = self.session.query(Category).filter_by(category_name = item["category_name"][j]).first()
+                current_rider = self.session.query(Rider).filter_by(rider_name = item["rider_name"]).first()
 
-                # check whether the current category_name already exists in the database
-                if result is None:  # the current category_name exists
-                    result = Result(rider_id = rider.id, category_id = category.id, event_id = event.id, result_position = item["result_position"][j])
+                result = self.session.query(Result).filter_by(event_id = current_event.id, category_id = current_category.id, rider_id = current_rider.id, result_position = item["result_position"][j], result_bib = item["result_bib"][j], result_beat = item["result_beat"][j], result_cat_participants = item["result_cat_participants"][j]).first()
 
-                result.result_bib = item["result_bib"][j]
+                # check whether the current result already exists in the database
+                if result is None:  # the current result doesn't exist
+                    result = Result(event_id = current_event.id, category_id = current_category.id, rider_id = current_rider.id, result_position = item["result_position"][j], result_bib = item["result_bib"][j], result_beat = item["result_beat"][j], result_cat_participants = item["result_cat_participants"][j])
 
                 self.session.add(result)
         
@@ -108,8 +105,8 @@ class StoreToDatabasePipeline(object):
 
     def process_item(self, item, spider):
         self.store_db(item)
-        logging.info("@@@@  ↓  @@@@  ↓  @@@@  ↓  @@@@  ↓  @@@@  ↓  Item stored in database  ↓  @@@@  ↓  @@@@  ↓  @@@@  ↓  @@@@  ↓  @@@@")
-        logging.info(item)
-        logging.info("@@@@  ↑  @@@@  ↑  @@@@  ↑  @@@@  ↑  @@@@  ↑  @@@@  ↑  @@@@  ↑  @@@@  ↑  @@@@  ↑  @@@@  ↑  @@@@  ↑  @@@@  ↑  @@@@  ↑  @@@@")
-        logging.info("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+        # logging.info("@@@@  ↓  @@@@  ↓  @@@@  ↓  @@@@  ↓  @@@@  ↓  Item stored in database  ↓  @@@@  ↓  @@@@  ↓  @@@@  ↓  @@@@  ↓  @@@@")
+        # logging.info(item)
+        # logging.info("@@@@  ↑  @@@@  ↑  @@@@  ↑  @@@@  ↑  @@@@  ↑  @@@@  ↑  @@@@  ↑  @@@@  ↑  @@@@  ↑  @@@@  ↑  @@@@  ↑  @@@@  ↑  @@@@  ↑  @@@@")
+        # logging.info("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
         return item

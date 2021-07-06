@@ -45,21 +45,28 @@ class RarSpider(scrapy.Spider):
             loader.add_xpath('event_name', '//*[@id="T1"]/tbody/tr/td[3]')
             loader.add_xpath('event_date', '//*[@id="T1"]/tbody/tr/td[2]/time/@datetime')
             loader.add_xpath('event_venue', '//*[@id="T1"]/tbody/tr/td[5]')
-            loader.add_xpath('event_participants', '//*[@id="T1"]/tbody/tr/td[10]/span')
             loader.add_xpath('result_bib', '//*[@id="T1"]/tbody/tr/td[8]')
+            loader.add_xpath('result_beat', '//*[@id="T1"]/tbody/tr/td[11]')
             loader.add_xpath('result_position', '//*[@id="T1"]/tbody/tr/td[10]')
+            loader.add_xpath('result_cat_participants', '//*[@id="T1"]/tbody/tr/td[10]/span')
 
             yield loader.load_item()
 
-            next_page = 'https://www.rootsandrain.com/rider' + str(RarSpider.url_parameter_rider)
+            next_page_path = response.xpath('//*[@class="pagingControl"]/strong/following-sibling::a/@href').extract_first()
+            next_page_url = 'https://www.rootsandrain.com' + str(next_page_path)
+            
+            if next_page_path:
+                yield response.follow(url=str(next_page_url), callback=self.parse)
 
-        if RarSpider.url_parameter_rider <= 200000:
+            next_rider_url = 'https://www.rootsandrain.com/rider' + str(RarSpider.url_parameter_rider)
+
+        if RarSpider.url_parameter_rider <= 195000:
             RarSpider.url_parameter_rider += 1
             logging.info("    ")
             logging.info("############################################  We're currently at this page:  ############################################")
-            logging.info(next_page)
+            logging.info(next_rider_url)
             logging.info("#########################################################################################################################")
             logging.info("    ")
-            yield response.follow(next_page, callback=self.parse)
+            yield response.follow(next_rider_url, callback = self.parse)
 
 

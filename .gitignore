@@ -21,3 +21,5 @@ pinkbike_scraper/pinkbike_scraper/spiders/comments.json
 rar_scraper/rar_scraper/rar_log.txt
 rar_scraper/rar_scraper/rootsandrain_database.db
 rar_scraper/rar_scraper/rootsandrain_database.db-journal
+rar_scraper/rar_scraper/spiders/rootsandrain_database.db
+rar_scraper/rar_scraper/spiders/rootsandrain_database.db-journal

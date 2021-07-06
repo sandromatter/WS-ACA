@@ -35,6 +35,16 @@ def convert_integer(text):
         text = str("")
     return text
 
+def convert_beat_integer(text):
+    # strip the percent sign and return int
+    beat_string = text
+    beat_integer = beat_string[:-1]
+    try:
+        text = int(beat_integer)
+    except:
+        text = str("")
+    return text
+
 def convert_position_integer(text):
     # Split into "position" and "participants"
     position_string = text
@@ -74,8 +84,18 @@ class RarScraperItem(scrapy.Item):
         output_processor = Identity()
     )
 
+    result_beat = scrapy.Field(
+        input_processor = MapCompose(remove_tags, convert_beat_integer),
+        output_processor = Identity()
+    )
+
     result_position = scrapy.Field(
         input_processor = MapCompose(remove_tags, convert_position_integer),
+        output_processor = Identity()
+    )
+
+    result_cat_participants = scrapy.Field(
+        input_processor = MapCompose(remove_tags, convert_participants_integer),
         output_processor = Identity()
     )
 
@@ -91,11 +111,6 @@ class RarScraperItem(scrapy.Item):
 
     event_venue = scrapy.Field(
         input_processor = MapCompose(remove_tags),
-        output_processor = Identity()
-    )
-
-    event_participants = scrapy.Field(
-        input_processor = MapCompose(remove_tags, convert_participants_integer),
         output_processor = Identity()
     )
 

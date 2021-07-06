@@ -22,7 +22,9 @@ from sqlalchemy.sql.elements import Null
 
 # result
     # result_bib
+    # result_beat
     # result_position
+    # result_cat_participants
 
 # rider
     # rider_meta_title
@@ -35,7 +37,6 @@ from sqlalchemy.sql.elements import Null
     # event_date
     # event_name
     # event_venue
-    # event_participants
 
 # category
     # category_name
@@ -82,7 +83,6 @@ class Event(Base):
     event_name = Column('event_name', Text())
     event_date = Column('event_date', Integer())
     event_venue = Column('event_venue', Text())
-    event_participants = Column('event_participants', Integer())
  
     results = relationship('Result', backref="event") # O-to-M for event and result
 
@@ -107,7 +107,9 @@ class Result(Base):
     id = Column(Integer, primary_key=True)
     event_id = Column(Integer, ForeignKey('event.id'))  # Many riders to one event
     category_id = Column(Integer, ForeignKey('category.id'))  # Many riders to one category
-    rider_id = Column(Integer, ForeignKey('rider.id'))  # Many riders to one category
+    rider_id = Column(Integer, ForeignKey('rider.id'))  # Many results to one rider
 
     result_bib = Column('result_bib', Integer())
+    result_beat = Column('result_beat', Integer())
     result_position = Column('result_position', Integer())
+    result_cat_participants = Column('result_cat_participants', Integer())
