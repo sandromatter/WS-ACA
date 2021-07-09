@@ -1,8 +1,10 @@
 # WS-ACA
 Dieses Projekt wurde im Modul *«Web Scraping &amp; Automated Content Analysis»* an der Fachhochschule Graubünden umgesetzt.
+
 <p align="center">
-![Cover image scrapy and python](docs/scrapy_python.png?raw=true "Cover image scrapy and python")
+  <img width="460" height="300" src="docs/scrapy_python.png?raw=true" alt="Cover image scrapy and python">
 </p>
+
 ---
 
 ## Ausgangslage 
